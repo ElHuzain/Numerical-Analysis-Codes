@@ -9,7 +9,7 @@ void swap(float _a[][4], int r1, int r2){
     for(int i = 0; i < 4; i++){
         temp[i] = _a[r1][i];
         _a[r1][i] = _a[r2][i];
-        _a[r2][i] = temo[i];
+        _a[r2][i] = temp[i];
     }
 }
 //---!! ONLY WHEN SOLVING WITH PARTIAL PIVOT !!---
