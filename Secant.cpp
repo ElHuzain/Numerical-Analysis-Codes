@@ -10,7 +10,7 @@ double f(double x){
     return -0.6 * pow(x, 2) + 2.4 * x + 5.5;
 }
 
-double secant(double xiMinus1, double xi, double error, int iter){
+double secant(double xiMinus1, double xi){
     double xiOld = xi;
     error = abs((xi - xiMinus1)/xi) * 100;
     cout << "i=" << iter << " | Xi-1= " << xiMinus1 << "| f(Xi-1)= "
@@ -19,12 +19,12 @@ double secant(double xiMinus1, double xi, double error, int iter){
     xi = xi - ((f(xi) * (xiMinus1 - xi)) / (f(xiMinus1) - f(xi)));
     xiMinus1 = xiOld;
     iter++;
-    if(error > eps) secant(xiMinus1, xi, error, iter);
+    if(error > eps) secant(xiMinus1, xi);
     else return xi;
 }
 
 int main(){
     double xiMinus1 = 5, xi = 10;
-    double root = secant(xiMinus1, xi, error, iter);
+    double root = secant(xiMinus1, xi);
     cout << "Root: " << root << endl;
 }
