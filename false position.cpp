@@ -10,10 +10,10 @@ double f(double x){
     return -0.6 * pow(x, 2) + 2.4 * x + 5.5;
 }
 
-double falsePosition(double xl, double xu, double error, int iter, double xr){
+double falsePosition(double xl, double xu){
     xrOld = xr;
     xr = (xl + xu) / 2;
-    xr = xu - (f(xu) * (xl - xu))/(f(xl) - f(xu))
+    xr = xu - (f(xu) * (xl - xu))/(f(xl) - f(xu));
     error = abs((xr - xrOld) / xr) * 100;
     cout << "iteration=" << iter << " | xl=" << xl 
          << " | f(xl)=" << f(xl) << " | xu=" << xu << " | f(xu)"
@@ -23,13 +23,12 @@ double falsePosition(double xl, double xu, double error, int iter, double xr){
     else if (f(xl) * f(xr) < 0) xu = xr;
     else return xr;
     iter++;
-    if(error > eps) bisect(xl, xu, error, iter, xr);
+    if(error > eps) falsePosition(xl, xu);
     else return xr;
 }
 
 int main(){
     float xl = 5, xu = 10;
-    cout << "Root =" << falsePosition(xl, xu, error, iter, xr) << endl;
+    cout << "Root =" << falsePosition(xl, xu) << endl;
     return 0;
 }
-
