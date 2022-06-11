@@ -12,7 +12,6 @@ double f(double x){
 
 double falsePosition(double xl, double xu){
     xrOld = xr;
-    xr = (xl + xu) / 2;
     xr = xu - (f(xu) * (xl - xu))/(f(xl) - f(xu));
     error = abs((xr - xrOld) / xr) * 100;
     cout << "iteration=" << iter << " | xl=" << xl 
