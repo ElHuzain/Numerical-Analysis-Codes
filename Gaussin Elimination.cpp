@@ -5,7 +5,7 @@ using namespace std;
 
 //---!! ONLY WHEN SOLVING WITH PARTIAL PIVOT !!---
 void swap(float _a[][4], int r1, int r2){
-    cout << "Swap row " << r1 << " with " << r2 << endl;
+    cout << "Swap R" << r1 << " <-> R" << r2 << endl;
     for(int i = 0; i < 4; i++){
         float temp = _a[r1][i];
         _a[r1][i] = _a[r2][i];
