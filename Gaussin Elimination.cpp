@@ -2,8 +2,29 @@
 #include <cmath>
 using namespace std;
 
+
+//---!! ONLY WHEN SOLVING WITH PARTIAL PIVOT !!---
+void swap(float _a[][4], int r1, int r2){
+    float temp [3];
+    for(int i = 0; i < 4; i++){
+        temp[i] = _a[r1][i];
+        _a[r1][i] = _a[r2][i];
+        _a[r2][i] = temo[i];
+    }
+}
+//---!! ONLY WHEN SOLVING WITH PARTIAL PIVOT !!---
+
 void GJE(float _a[][4], float& m21, float& m31, float& m32)
 {
+    //---!! ONLY WHEN SOLVING WITH PARTIAL PIVOT !!---
+    // Check if pivot is larger than the elements below it
+    if(abs(_a[0][0]) < abs(_a[1][0]) || abs(_a[0][0]) < abs(_a[2][0]))
+        if(abs(_a[1][0]) > abs(_a[2][0]))
+            swap(_a, 0, 1);
+        else swap(_a, 0, 2);
+    //---!! ONLY WHEN SOLVING WITH PARTIAL PIVOT !!---
+
+
     m21 = _a[1][0] / _a[0][0];
     m31 = _a[2][0] / _a[0][0];
     //rule E2-(m21)E1 = E2
@@ -20,6 +41,13 @@ void GJE(float _a[][4], float& m21, float& m31, float& m32)
         float e1 = ((m31)*_a[0][j]);
         _a[2][j] = e3 - e1;
     }
+
+    //---!! ONLY WHEN SOLVING WITH PARTIAL PIVOT !!---
+    // Check if m22 is larger than the element below it
+    if(abs(_a[1][1]) < abs(_a[2][1]))
+        swap(_a, 1, 2);
+    //---!! ONLY WHEN SOLVING WITH PARTIAL PIVOT !!---
+
     m32 = _a[2][1] / _a[1][1];
     //rule E3-(m32)E2 = E3
     for (int j = 0; j < 4; j++)
