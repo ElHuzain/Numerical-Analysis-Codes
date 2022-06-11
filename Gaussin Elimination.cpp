@@ -59,7 +59,7 @@ void GJE(float _a[][4], float& m21, float& m31, float& m32)
     float x3 = _a[2][3] / _a[2][2];
     float x2 = (_a[1][3] - (_a[1][2] * x3)) / _a[1][1];
     float x1 = (_a[0][3] - ((_a[0][1] * x2) + (_a[0][2] * x3))) / _a[0][0];
-    cout << "Gauss Jordan Result" << endl << "X1 = " << x1 << endl << "X2 = ";
+    cout << "Gaussian Elimination Result" << endl << "X1 = " << x1 << endl << "X2 = ";
     cout << x2 << endl << "X3 = " << x3 << endl;
 }
 
