@@ -10,7 +10,7 @@ double f(double x){
     return -0.6 * pow(x, 2) + 2.4 * x + 5.5;
 }
 
-double bisect(double xl, double xu, double error, int iter, double xr){
+double bisect(double xl, double xu){
     xrOld = xr;
     xr = (xl + xu) / 2;
     error = abs((xr - xrOld) / xr) * 100;
@@ -22,13 +22,12 @@ double bisect(double xl, double xu, double error, int iter, double xr){
     else if (f(xl) * f(xr) < 0) xu = xr;
     else return xr;
     iter++;
-    if(error > eps) bisect(xl, xu, error, iter, xr);
+    if(error > eps) bisect(xl, xu);
     else return xr;
 }
 
 int main(){
     float xl = 5, xu = 10;
-    cout << "Root =" << bisect(xl, xu, error, iter, xr) << endl;
+    cout << "Root =" << bisect(xl, xu) << endl;
     return 0;
 }
-
